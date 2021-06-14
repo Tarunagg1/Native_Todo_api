@@ -23,7 +23,7 @@ const registerController = async (req,res) => {
         }
     } catch (error) {
         console.log(error);
-        return res.status(400).json({error:"Something went wrong"})        
+        return res.status(400).json({error:"Something went wrong",er:error})        
     }
 }
 
@@ -41,7 +41,7 @@ const loginController = async (req,res) => {
                         name:isemailexist.name,
                         email:isemailexist.email
                     }
-                    const token = jwt.sign(data,process.env.LOGIN_SECRET,{expiresIn:'7d'})
+                    const token = jwt.sign(data,'ojuiguysdc6sf2d+6vd+6f2vdf+6g2d6',{expiresIn:'7d'})
                     return res.status(200).json({message:"login success",token});  
                 }else{
                     return res.status(400).json({error:"Invalid password"});  
@@ -54,7 +54,7 @@ const loginController = async (req,res) => {
         }
     } catch (error) {
         console.log(error);
-        return res.status(400).json({error:"Something went wrong"})        
+        return res.status(400).json({error:"Something went wrong",er:error})        
     }
 }
 
