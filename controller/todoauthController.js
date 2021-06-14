@@ -19,7 +19,7 @@ const registerController = async (req,res) => {
         });
         const resp = await newuser.save();
         if(resp){
-            return res.status(201).json({error:"user registration successfully"});   
+            return res.status(201).json({message:"user registration successfully"});   
         }
     } catch (error) {
         console.log(error);
