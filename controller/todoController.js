@@ -24,6 +24,16 @@ exports.gettodo = async (req,res)=>{
     }
 }
 
+exports.gettodobyid = async (req,res)=>{
+    try {
+        let todoid = req.params.id;
+        const resp = await todomodal.find({userid:req.user._id,_id:todoid});
+        return res.status(201).json({message:"Yours todos",resp})
+    } catch (error) {
+        return res.status(400).json({error:"Something went wrong"})        
+    }
+}
+
 exports.deletetodo = async (req,res)=>{
     try {
         const todoid = req.params.id;

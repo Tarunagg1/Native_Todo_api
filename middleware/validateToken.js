@@ -6,16 +6,16 @@ const validatetoken = async (req, res, next) => {
         // console.log(req.headers);
         const token = req.headers.authorization.split(" ")[1];
         // console.log(token);
-        const userinfo = jwt.verify(token,'ojuiguysdc6sf2d+6vd+6f2vdf+6g2d6');
+        const userinfo = jwt.verify(token, 'ojuiguysdc6sf2d+6vd+6f2vdf+6g2d6');
         // console.log(userinfo);
         if (!userinfo) {
             return res.status(500).json({ errors: [{ message: "Token not provided", status: false }] });
         }
         const isuserexist = await registerModal.findById(userinfo._id);
-        if(isuserexist){
+        if (isuserexist) {
             req.user = userinfo;
             next();
-        }else{
+        } else {
             return res.status(500).json({ errors: [{ message: "Logout and Login again", status: false, errs: error }] });
         }
     } catch (error) {

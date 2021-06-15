@@ -17,9 +17,12 @@ app.get('/',(req,res) => {
 
 app.use('/api',Router);
 
-app.listen(PORT,() => {
+const server = app.listen(PORT,() => {
     console.log('server listning at ',PORT);
 })
 
 
+module.exports = {
+    server
+}
 // MONGODB_KEY = mongodb://localhost/todoapi
