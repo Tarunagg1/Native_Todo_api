@@ -24,6 +24,15 @@ exports.gettodo = async (req,res)=>{
     }
 }
 
+exports.getalltodo = async (req,res)=>{
+    try {
+        const resp = await todomodal.find({});
+        return res.status(201).json({message:"Yours todos",resp})
+    } catch (error) {
+        return res.status(400).json({error:"Something went wrong"})        
+    }
+}
+
 exports.gettodobyid = async (req,res)=>{
     try {
         let todoid = req.params.id;

@@ -1,5 +1,5 @@
 const { registerController,loginController } = require('../controller/todoauthController');
-const { addtodo,deletetodo,updtetodo,gettodo,gettodobyid } = require('../controller/todoController');
+const { addtodo,deletetodo,updtetodo,gettodo,gettodobyid, getalltodo } = require('../controller/todoController');
 const validatetoken = require('../middleware/validateToken');
 
 const Router = require('express').Router();
@@ -15,6 +15,7 @@ Router.post('/login',loginController)
 
 Router.post('/todo',validatetoken,addtodo);
 Router.get('/todo',validatetoken,gettodo);
+Router.get('/alltodo',validatetoken,getalltodo);
 
 Router.get('/todo/:id',validatetoken,gettodobyid)
 

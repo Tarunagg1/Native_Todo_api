@@ -29,7 +29,6 @@ const registerController = async (req,res) => {
 
 const loginController = async (req,res) => {
     const {email,password} = req.body;
-
     try {
         const isemailexist = await userModel.findOne({email});
         if(isemailexist){
